@@ -1,20 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { User, UserFormValues } from "../types"
-
-// TODO: Create a types file for all types
-
-interface useUserDataResult {
-  users: User[];
-  currentPage: number;
-  totalPages: number;
-  fetchUsers: () => Promise<void>;
-  handleDeleteUser: (id: number) => Promise<void>;
-  handleAddUser: (formValues: UserFormValues) => Promise<void>;
-  handlePageChange: (pageNumber: number) => void;
-  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
-  getUniqueId: () => number;
-}
+import { User, UserFormValues, useUserDataResult } from "../types"
 
 const useUserData = (): useUserDataResult => {
   const [users, setUsers] = useState<User[]>([]);
