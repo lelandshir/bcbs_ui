@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import useUserData from "../hooks/useUserData";
-import UserCard from "../components/tools/UserCard";
-import LoginView from "../components/LoginView"
-import "./styles/WelcomeView.css"
+import useUserData from "../../hooks/useUserData";
+import UserCard from "../../components/tools/UserCard";
+import LoginView from "./LoginView"
+import "../styles/WelcomeView.css"
 
 const WelcomeView: React.FC = () => {
   const {
@@ -42,7 +42,8 @@ const WelcomeView: React.FC = () => {
       <div className="user-list">
         {users.map((user) => (
           <UserCard
-            key={user.id}
+            key={user.id} 
+            userKey={user.id}
             user={user}
             users={users}
             onDelete={() => handleDeleteUser(user.id)}

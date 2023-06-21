@@ -10,19 +10,19 @@ interface User {
 }
 
 interface UserCardProps {
-  key: number;
+  userKey?: number;
   user: User;
   onDelete: () => void;
   users: User[];
   setUsers: React.Dispatch<React.SetStateAction<User[]>>;
 }
 
-const UserCard: React.FC<UserCardProps> = ({ user, onDelete, setUsers, key }) => {
+const UserCard: React.FC<UserCardProps> = ({ user, onDelete, setUsers, userKey }) => {
   const handleDelete = async (): Promise<void> => {
     try {
       await deleteUser(user.id);
       onDelete();
-      setUsers(prevUsers => [...prevUsers.filter(user => user.id !== key)])
+      setUsers(prevUsers => [...prevUsers.filter(user => user.id !== userKey)])
     } catch (error) {
       console.error("Error deleting user:", error);
     }

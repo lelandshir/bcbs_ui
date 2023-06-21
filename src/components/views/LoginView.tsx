@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import WelcomeView from "./WelcomeView";
-import "./styles/LoginView.css";
+import "../styles/LoginView.css";
 
 const LoginView: React.FC = () => {
   const [email, setEmail] = useState<string>("");

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import LoginView from "./components/LoginView";
-import WelcomeView from "./components/WelcomeView";
+import LoginView from "./components/views/LoginView";
+import WelcomeView from "./components/views/WelcomeView";
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
