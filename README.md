@@ -8,7 +8,6 @@ This folder contains the frontend code for the app. It is responsible for the us
 ### Prerequisites
 - Node.js and npm should be installed on your machine. You can download them from https://nodejs.org :P.
 - Installation
-    - Clone the repository
     - Open a terminal or command prompt and navigate to the ui folder:
         - `cd bcbs_app/ui`
         - Install the dependencies by running `npm install`
