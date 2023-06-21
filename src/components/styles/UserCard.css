@@ -1,0 +1,44 @@
+.user-card {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .user-card-avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+  
+  .user-card-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .user-card-email {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 12px;
+  }
+  
+  .user-card-delete-button {
+    background-color: #ff4f4f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .user-card-delete-button:hover {
+    background-color: darkred;
+  }
+  

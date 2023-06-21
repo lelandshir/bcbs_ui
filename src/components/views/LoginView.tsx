@@ -25,11 +25,11 @@ const LoginView: React.FC = () => {
         const response = await register(email, password);
 
         if (response) {
-          console.log("loginview-REGISTER-res", response)
-          const { data: { token }  } = response;
+          const { data: { token, id }  } = response;
 
           if (token) {
             localStorage.setItem("token", token);
+            localStorage.setItem("userId", id);
             setLoggedIn(true);
           }
         }
@@ -37,12 +37,14 @@ const LoginView: React.FC = () => {
         const credentials = { email, password };
         const response = await login(email, password);
         
-        if (!!response && response.data === "Authentication successful") {
-          console.log("loginview-LOGIN-res", response)
-          setLoggedIn(true)
-          console.log(isLoggedIn)
+        if (!!response && response.data) {
+          localStorage.setItem("token", response.data.toLowerCase().replace(" ", "_"));
+          localStorage.setItem("email", JSON.parse(response.config.data)?.email);
+
+          if (response.data === "Authentication successful") {
+            setLoggedIn(true)
+          }
         }
-        
       }
     } catch (error) {
       console.error("Error logging in or registering:", error);

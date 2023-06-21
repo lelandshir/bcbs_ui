@@ -1,14 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { User, UserFormValues } from "../types"
 
-
-interface User {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  avatar: string;
-}
+// TODO: Create a types file for all types
 
 interface useUserDataResult {
   users: User[];
@@ -16,9 +10,10 @@ interface useUserDataResult {
   totalPages: number;
   fetchUsers: () => Promise<void>;
   handleDeleteUser: (id: number) => Promise<void>;
-  handleAddUser: () => Promise<void>;
+  handleAddUser: (formValues: UserFormValues) => Promise<void>;
   handlePageChange: (pageNumber: number) => void;
-  setUsers:any;
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
+  getUniqueId: () => number;
 }
 
 const useUserData = (): useUserDataResult => {
@@ -27,17 +22,12 @@ const useUserData = (): useUserDataResult => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [deletedUsers, setDeletedUsers] = useState<number[]>([]);
 
-
-  const getUniqueId = () => {
+  const getUniqueId = (): number => {
     const min = 100000; 
     const max = 999999; 
     const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNum;
   };
-
-  // useEffect(() => {
-  //   fetchUsers();
-  // });
 
   const fetchUsers = async (): Promise<void> => {
     try {
@@ -63,24 +53,22 @@ const useUserData = (): useUserDataResult => {
     }
   };
 
-  const handleAddUser = async (): Promise<void> => {
-    const newUser = {
-      password: 'spongey123',
-      job: "Software Engineer",
-      id: getUniqueId(), 
-      first_name: "John", 
-      last_name: "Doe", 
-      email: "jd@gmail.com", 
-      avatar: "https://static.wikia.nocookie.net/cartoons/images/e/ed/Profile_-_SpongeBob_SquarePants.png/revision/latest?cb=20230305115632"
-    };
+  const handleAddUser = async (formValues: UserFormValues): Promise<void> => {
+    console.log(formValues)
+      const newUser = {
+        id: getUniqueId(),
+        first_name: formValues.first_name || "",
+        last_name: formValues.last_name || "",
+        email: formValues.email || "",
+        avatar: formValues.avatar === "" ? "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmuppets.disney.com%2Fkermit-the-frog&psig=AOvVaw2IxyFXa4AMHZhE5T9mnu5O&ust=1687455904325000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNjT35_11P8CFQAAAAAdAAAAABAK" : formValues.avatar
+      };
 
-    try {
-      await axios.post("https://reqres.in/api/users", newUser);
-      // fetchUsers(); // Note: Can fetch user list after addition however API doesn't allow us to add users so it is pointless
-      setUsers(prevUsers => [...prevUsers, newUser])
-    } catch (error) {
-      console.error("Error adding user:", error);
-    }
+      try {
+        await axios.post("https://reqres.in/api/users", newUser);
+        setUsers((prevUsers: User[]) => [...prevUsers, newUser]);
+      } catch (error) {
+        console.error("Error adding user:", error);
+      }
   };
 
   const handlePageChange = (pageNumber: number): void => {
@@ -107,6 +95,7 @@ const useUserData = (): useUserDataResult => {
     handleDeleteUser,
     handleAddUser,
     handlePageChange,
+    getUniqueId
   };
 };
 

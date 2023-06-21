@@ -14,7 +14,6 @@ const useAuth = () => {
       });
 
       if (!!response) {
-        console.log("Login Response", response)
         return response;
       } else {
         setError("Invalid email or password");
@@ -30,8 +29,6 @@ const useAuth = () => {
         email,
         password,
       });
-
-      console.log("Register Response", response)
 
       if (!!response) {
         return response;
