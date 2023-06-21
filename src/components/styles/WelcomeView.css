@@ -1,0 +1,77 @@
+.welcome-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+.welcome-view h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.welcome-view h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.welcome-view .user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.welcome-view .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.welcome-view .pagination button {
+  margin: 0 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.welcome-view .pagination button:hover {
+  background-color: #eaeaea;
+}
+
+.welcome-view .pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.welcome-view .add-user-button {
+  margin-top: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.welcome-view .add-user-button:hover {
+  background-color: #45a049;
+}
+
+.welcome-view .logout-link {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.welcome-view .logout-link:hover {
+  text-decoration: underline;
+}
